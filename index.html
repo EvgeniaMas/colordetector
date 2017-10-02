@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+	  <title>Colors</title>
+	  <style type="text/css">
+	  img {
+		  width: 450px;
+		  display: block;
+		  margin: 0 auto;
+		  margin-top: 40px;
+		  margin-bottom: 30px;
+	  } 
+	  button {
+	  	margin:auto;
+	  }
+
+	  #info {
+	  	height: 370px;	  	
+	  	margin:auto;
+	  	display: block;  	  
+	  	
+	  }
+
+	  .images {
+	  	display: inline;
+	  	width: 200px;
+	  	height: 100px;
+	  	border: 2px solid grey;
+	  }
+
+	  #checked {
+	  	 width: 450px;
+		  display: block;
+		  margin: 0 auto;
+		  margin-top: 40px;
+		  margin-bottom: 30px;
+	  }
+
+	  #format {
+	  	min-height: 100px;
+	  	background-color: green;
+	  }
+	  </style>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+
+	<body>
+
+        <div class="container">
+		<h2 class="text-center"> Check image to see the most used color! </h2>
+        </div>
+		<div class="container" id="info">			
+			<img id="checked" src="" alt=""/>
+			<!-- <h4 id="format"	> </h4>	 -->	
+		</div>
+			
+			<div  class="container" id="toSelect">
+			    <img class="images" data-info="images/1.jpg" src="images/1.jpg" alt="" />
+			    <img class="images" data-info="images/2.jpg" src="images/2.jpg" alt="" />
+			    <img class="images" data-info="images/3.jpg" src="images/3.jpg" alt="" />
+			    <img class="images" data-info="images/4.jpg" src="images/4.jpg" alt="" />
+			    <img class="images" data-info="images/5.jpg" src="images/5.jpg" alt="" />
+			    <img class="images" data-info="images/6.jpg" src="images/6.jpg" alt="" />
+			    <img class="images" data-info="images/7.jpg" src="images/7.jpg" alt="" />
+			    <img class="images" data-info="images/8.jpg" src="images/8.jpg" alt="" />
+			    <img class="images" data-info="images/9.jpg" src="images/9.jpg" alt="" />
+			    <img class="images" data-info="images/10.jpg" src="images/10.jpg" alt="" />
+			    <img class="images" data-info="images/11.jpg" src="images/11.jpg" alt="" />
+			    <img class="images" data-info="images/12.jpg" src="images/12.jpg" alt="" />
+			    <img class="images" data-info="images/13.jpg" src="images/13.jpg" alt="" />
+			    <img class="images" data-info="images/14.jpg" src="images/14.jpg" alt="" />
+			    <img class="images" data-info="images/15.jpg" src="images/15.jpg" alt="" />
+			    <img class="images" data-info="images/16.jpg" src="images/16.jpg" alt="" />
+			    <img class="images" data-info="images/17.jpg" src="images/17.jpg" alt="" />
+			    <img class="images" data-info="images/18.jpg" src="images/18.jpg" alt="" />
+			    <img class="images" data-info="images/19.jpg" src="images/19.jpg" alt="" />
+			    <img class="images" data-info="images/20.jpg" src="images/20.jpg" alt="" />
+			    <img class="images" data-info="images/21.jpg" src="images/21.jpg" alt="" />
+			    <img class="images" data-info="images/22.jpg" src="images/22.jpg" alt="" />
+			    <img class="images" data-info="images/23.jpg" src="images/23.jpg" alt="" />
+			    <img class="images" data-info="images/24.jpg" src="images/24.jpg" alt="" />
+			    <img class="images" data-info="images/25.jpg" src="images/25.jpg" alt="" />	
+			    <img class="images" data-info="images/26.jpg" src="images/26.jpg" alt="" />
+			    <img class="images" data-info="images/27.jpg" src="images/27.jpg" alt="" />
+			    <img class="images" data-info="images/28.jpg" src="images/28.jpg" alt="" />
+			    <img class="images" data-info="images/29.jpg" src="images/29.jpg" alt="" />
+			    <img class="images" data-info="images/30.jpg" src="images/30.jpg" alt="" />
+			   
+			   
+			</div>
+
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		
+	
+		<script>
+			$('#toSelect img').on('click', function(){
+    		$('#info img').attr('src', $(this).data('info'));
+			});
+		</script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/vibrant.js/1.0.0/Vibrant.js"></script>
+
+		 <script type="text/javascript">
+		 var img = document.getElementById('checked');
+		 var info = document.getElementById('info');
+		// var colorFormat = document.getElementById('format');  		 
+		img.setAttribute('src', img.getAttribute('data-src')); 
+		img.crossOrigin = 'anonymous';
+		img.addEventListener('load', function() {
+		var vibrant = new Vibrant(img);
+		var swatches = vibrant.swatches();			
+		for (var swatch in swatches)
+		if (swatches.hasOwnProperty(swatch) && swatches[swatch])
+		var detectedColor = swatches[swatch].getHex();
+		// console.log(detectedColor);
+	    // var colorRgb = swatches[swatch].getRgb();
+	    // console.log(colorRgb);
+	    info.style.backgroundColor = detectedColor;	
+		// colorFormat.innerHTML = "The most used color: RGB" + colorRgb +")" + "or in Hex format: " + detectedColor;		
+		});
+		 </script>
+	</body>
+</html>
